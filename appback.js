@@ -14,11 +14,11 @@ app.use(cors()); // Allows API access from different domains (front-end)
 app.use(express.json()); // Parses JSON request bodies
 
 // Serve static files (HTML, CSS, JS) from the 'public' folder
-app.use(express.static(path.join(dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Add a route for the root path to serve the HTML page
+// Add a route for the root path
 app.get('/', (req, res) => {
-  res.sendFile(path.join(dirname, 'public', 'index.html')); // Serve your main HTML file
+  res.send('Welcome to the To-Do API! Use /api/todos to interact with the to-do list.');
 });
 
 // Get all todos
@@ -65,5 +65,5 @@ app.delete('/api/todos/:id', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log(Server running at http://localhost:${port});
+  console.log(`Server running at http://localhost:${port}`);
 });
