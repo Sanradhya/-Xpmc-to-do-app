@@ -16,6 +16,11 @@ app.use(express.json()); // Parses JSON request bodies
 // Serve static files (HTML, CSS, JS) from the 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Add a route for the root path
+app.get('/', (req, res) => {
+  res.send('Welcome to the To-Do API! Use /api/todos to interact with the to-do list.');
+});
+
 // Get all todos
 app.get('/api/todos', (req, res) => {
   res.json(todos);
